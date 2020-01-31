@@ -1,15 +1,12 @@
-/out/
+# Docker build
+/.git/
+
+# Build
 /resources/public/js/compiled/
 /target/
-/*-init.clj
-/*.log
 
-# Leiningen
-/.lein-*
-/.nrepl-port
-
-# Node.js dependencies
+# JavaScript
 /node_modules/
 
-# shadow-cljs cache, port files
+# ClojureScript
 /.shadow-cljs/
