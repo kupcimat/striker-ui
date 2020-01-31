@@ -1,0 +1,36 @@
+name: Deploy on Production
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy-on-heroku:
+    name: Deploy on Heroku
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+      - name: Login to Registry
+        uses: actions/heroku@master
+        with:
+          args: container:login
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      - name: Build
+        uses: actions/heroku@master
+        with:
+          args: container:push web --app=${HEROKU_APP}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP: striker-vn-ui
+      - name: Release
+        uses: actions/heroku@master
+        with:
+          args: container:release web --app=${HEROKU_APP}
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP: striker-vn-ui
+      - name: Health Check
+        run: curl https://${HEROKU_APP}.herokuapp.com/index.html | grep html
+        env:
+          HEROKU_APP: striker-vn-ui

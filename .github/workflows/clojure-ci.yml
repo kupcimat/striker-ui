@@ -1,0 +1,17 @@
+name: Clojure CI
+on: push
+jobs:
+  run-tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@master
+      - name: Setup Java
+        uses: actions/setup-java@master
+        with:
+          java-version: 11
+      - name: Install Dependencies
+        run: lein deps
+      - name: Run Tests
+        run: lein test
