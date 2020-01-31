@@ -7,9 +7,9 @@
                 :asset-path      "/js/compiled"
                 :modules         {:app {:init-fn striker.core/init
                                         :preloads [devtools.preload]}}
-                :devtools        {:http-root    "resources/public"
-                                  :http-port    8280
-                                  }}
+                :devtools        {:http-root "resources/public"
+                                  :http-port 8280
+                                  :proxy-url "http://localhost:8080"}}
 
           :browser-test
           {:target :browser-test
