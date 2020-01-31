@@ -1,0 +1,20 @@
+server {
+    listen       ${PORT};
+    server_name  localhost;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    # redirect api calls to the custom backend uri
+    #
+    location /api/ {
+        return  301              ${BACKEND_URI}$request_uri;
+    }
+
+    # redirect error pages to the custom static page
+    #
+    error_page  404              /404.html;
+    error_page  500 502 503 504  /50x.html;
+}
