@@ -1,4 +1,7 @@
-(ns striker.db)
+(ns striker.db
+  (:require
+    [striker.fixtures :as fixtures]))
 
 (def default-db
-  {:name "re-frame"})
+  {:search-results fixtures/search-results
+   :hotel          fixtures/hotel})
