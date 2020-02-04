@@ -32,6 +32,7 @@
 (defn show-panel [panel-name]
   (case panel-name
     ::routes/search-panel [search-panel]
+    ::routes/hotel-panel [:div>p "todo hotel"]
     [:div]))
 
 (defn main-panel []

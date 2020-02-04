@@ -6,8 +6,8 @@
     [striker.events :as events]))
 
 (def routes
-  [["/"          {:name ::root-path}]
-   ["/hotel/:id" {:name ::hotel-path}]])
+  [["/"          {:name ::search-panel}]
+   ["/hotel/:id" {:name ::hotel-panel}]])
 
 (def router
   (reitit-fe/router routes))
