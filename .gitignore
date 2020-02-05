@@ -1,7 +1,5 @@
-# Docker build
-/.git/
-
 # Build
+/resources/public/info.json
 /resources/public/js/compiled/
 /target/
 

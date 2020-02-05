@@ -1,4 +1,4 @@
-(defproject striker "release"
+(defproject org.saigon/striker "release"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/clojurescript "1.10.597"
                   :exclusions [com.google.javascript/closure-compiler-unshaded
@@ -18,7 +18,7 @@
   :test-paths   ["test/cljs"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
-                                    "test/js"]
+                                    "resources/public/info.json"]
 
   :shell {:commands {"open" {:windows ["cmd" "/c" "start"]
                              :macosx  "open"
@@ -26,8 +26,9 @@
 
   :aliases {"dev"          ["with-profile" "dev" "do"
                             ["run" "-m" "shadow.cljs.devtools.cli" "watch" "app"]]
-            "prod"         ["with-profile" "prod" "do"
-                            ["run" "-m" "shadow.cljs.devtools.cli" "release" "app"]]
+            "prod"         ["do"
+                            ["with-profile" "dev" "run" "-m" "striker.util/build-info" :project/group :project/name "resources/public/info.json"]
+                            ["with-profile" "prod" "run" "-m" "shadow.cljs.devtools.cli" "release" "app"]]
             "build-report" ["with-profile" "prod" "do"
                             ["run" "-m" "shadow.cljs.devtools.cli" "run" "shadow.cljs.build-report" "app" "target/build-report.html"]
                             ["shell" "open" "target/build-report.html"]]
@@ -36,7 +37,8 @@
                             ["shell" "./node_modules/karma/bin/karma" "start" "--single-run" "--reporters" "junit,dots"]]}
 
   :profiles {:dev {:dependencies [[binaryage/devtools "0.9.11"]
-                                  [proto-repl "0.3.1"]]}
+                                  [proto-repl "0.3.1"]
+                                  [org.clojure/data.json "0.2.7"]]}
              :prod {}}
 
   :prep-tasks [])
