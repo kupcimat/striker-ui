@@ -13,8 +13,8 @@
   (reitit-fe/router routes))
 
 (defn on-navigate [match]
-  (when match
-    (re-frame/dispatch [::events/set-active-panel (get-in match [:data :name])])))
+  (let [route (if match (get-in match [:data :name]) ::not-found-panel)]
+    (re-frame/dispatch [::events/set-active-panel route])))
 
 (defn init-routes []
   (reitit-fe-easy/start!
