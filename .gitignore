@@ -10,3 +10,7 @@
 
 # ClojureScript
 /.shadow-cljs/
+
+# Leiningen
+/.lein-repl-history
+/.nrepl-port
