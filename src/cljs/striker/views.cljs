@@ -29,10 +29,16 @@
                   "Landmark" "location_on"
                   "location_on")]]])]))
 
+(defn not-found-panel []
+  [:div.center-align
+   [:h5 "Page not found."]
+   [:p "You can try the " [:a {:href "#"} "main page"] " instead."]])
+
 (defn show-panel [panel-name]
   (case panel-name
-    ::routes/search-panel [search-panel]
-    ::routes/hotel-panel [:div>p "todo hotel"]
+    ::routes/search-panel    [search-panel]
+    ::routes/hotel-panel     [:div>p "todo hotel"]
+    ::routes/not-found-panel [not-found-panel]
     [:div]))
 
 (defn main-panel []
