@@ -34,3 +34,8 @@ jobs:
         run: curl https://${HEROKU_APP}.herokuapp.com/index.html | grep html
         env:
           HEROKU_APP: striker-vn-ui
+      - name: Version Check
+        run: curl https://${HEROKU_APP}.herokuapp.com/info.json | grep ${BUILD_COMMIT}
+        env:
+          BUILD_COMMIT: ${{ github.sha }}
+          HEROKU_APP: striker-vn-ui

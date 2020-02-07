@@ -16,6 +16,7 @@ RUN lein deps
 # Build application
 COPY --from=yarn-build /tmp/build .
 COPY shadow-cljs.edn .
+COPY .git .git
 COPY resources resources
 COPY src src
 RUN lein prod
