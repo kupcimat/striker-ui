@@ -3,5 +3,6 @@
     [striker.fixtures :as fixtures]))
 
 (def default-db
-  {:search-results fixtures/search-results
+  {:active-panel   nil
+   :search-results fixtures/search-results
    :hotel          fixtures/hotel})
