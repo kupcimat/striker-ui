@@ -7,6 +7,7 @@
                  [thheller/shadow-cljs "2.8.83"]
                  [reagent "0.9.1"]
                  [re-frame "0.11.0"]
+                 [day8.re-frame/http-fx "v0.2.0"]
                  [metosin/reitit-frontend "0.4.2"]]
 
   :plugins [[lein-shell "0.5.0"]]
