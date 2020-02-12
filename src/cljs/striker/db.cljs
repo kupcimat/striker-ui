@@ -1,8 +1,6 @@
-(ns striker.db
-  (:require
-    [striker.fixtures :as fixtures]))
+(ns striker.db)
 
 (def default-db
   {:active-panel   nil
-   :search-results fixtures/search-results
-   :hotel          fixtures/hotel})
+   :search-results []
+   :hotel          {}})
