@@ -1,4 +1,9 @@
-(ns striker.utils)
+(ns striker.utils
+  (:require
+    [re-frame.core :as re-frame]))
+
+(def >evt re-frame/dispatch)
+(def <sub (comp deref re-frame/subscribe))
 
 (defn unwrap [input keyword-set]
   (cond
