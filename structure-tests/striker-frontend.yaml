@@ -1,0 +1,25 @@
+schemaVersion: 2.0.0
+
+metadataTest:
+  env:
+    - key: "NGINX_VERSION"
+      value: "1.17.9"
+  entrypoint: []
+  cmd:
+    - "/bin/sh"
+    - "-c"
+    - "/bin/sh -c \"envsubst '\\$PORT \\$BACKEND_URI' < /etc/nginx/conf.d/nginx-config.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'\""
+
+fileExistenceTests:
+  - name: "index.html"
+    path: "/usr/share/nginx/html/index.html"
+    shouldExist: true
+  - name: "info.json"
+    path: "/usr/share/nginx/html/info.json"
+    shouldExist: true
+  - name: "app.js"
+    path: "/usr/share/nginx/html/js/compiled/app.js"
+    shouldExist: true
+  - name: "nginx config template"
+    path: "/etc/nginx/conf.d/nginx-config.template"
+    shouldExist: true
