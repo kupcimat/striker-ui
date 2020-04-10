@@ -7,13 +7,13 @@ server {
         index  index.html index.htm;
     }
 
-    # redirect api calls to the custom backend uri
+    # proxy api calls to the backend
     #
     location /api/ {
-        return  301              ${BACKEND_URI}$request_uri;
+        proxy_pass  ${BACKEND_URI};
     }
 
-    # redirect error pages to the custom static page
+    # redirect errors to the static pages
     #
     error_page  404              /404.html;
     error_page  500 502 503 504  /50x.html;
