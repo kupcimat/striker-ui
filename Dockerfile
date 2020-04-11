@@ -7,7 +7,7 @@ COPY yarn.lock .
 RUN yarn install
 
 # Install clojure dependencies
-FROM clojure:openjdk-13-lein AS lein-build
+FROM clojure:openjdk-14-lein AS lein-build
 WORKDIR /tmp/build
 
 COPY project.clj .
