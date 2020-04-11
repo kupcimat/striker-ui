@@ -13,7 +13,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@master
         with:
-          java-version: 13
+          java-version: 14
       - name: Install JavaScript Dependencies
         run: yarn install
       - name: Install Clojure Dependencies
