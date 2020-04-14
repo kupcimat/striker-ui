@@ -13,6 +13,13 @@ server {
         proxy_pass  ${BACKEND_URI};
     }
 
+    # expose health information endpoint
+    #
+    location /health {
+        default_type  application/json;
+        return  200   '{"status":"UP"}';
+    }
+
     # redirect errors to the static pages
     #
     error_page  404              /404.html;
