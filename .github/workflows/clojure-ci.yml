@@ -1,17 +1,14 @@
-name: Clojure CI
-on:
-  push:
-    branches-ignore:
-      - master
+name: Striker CI
+on: pull_request
 jobs:
   run-tests:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Setup Java
-        uses: actions/setup-java@master
+        uses: actions/setup-java@v1
         with:
           java-version: 14
       - name: Install JavaScript Dependencies
