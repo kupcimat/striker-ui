@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Login to Registry
         uses: actions/heroku@master
         with:
@@ -31,7 +31,7 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP: striker-vn-ui
       - name: Health Check
-        run: curl https://${HEROKU_APP}.herokuapp.com/index.html | grep html
+        run: curl https://${HEROKU_APP}.herokuapp.com/health | grep UP
         env:
           HEROKU_APP: striker-vn-ui
       - name: Version Check
