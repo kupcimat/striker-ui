@@ -3,7 +3,7 @@ schemaVersion: 2.0.0
 metadataTest:
   env:
     - key: "NGINX_VERSION"
-      value: "1.17.9"
+      value: "1.17.10"
   entrypoint: []
   cmd:
     - "/bin/sh"
