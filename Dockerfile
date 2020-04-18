@@ -24,7 +24,7 @@ RUN lein prod
 # Build production image
 FROM nginx:alpine
 
-COPY --from=lein-build /tmp/build/resources/public /usr/share/nginx/html
 COPY config/nginx-config.template /etc/nginx/conf.d/nginx-config.template
+COPY --from=lein-build /tmp/build/resources/public /usr/share/nginx/html
 
 CMD /bin/sh -c "envsubst '\$PORT \$BACKEND_URI' < /etc/nginx/conf.d/nginx-config.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
