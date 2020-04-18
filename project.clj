@@ -4,9 +4,9 @@
                   :exclusions [com.google.javascript/closure-compiler-unshaded
                                org.clojure/google-closure-library
                                org.clojure/google-closure-library-third-party]]
-                 [thheller/shadow-cljs "2.8.83"]
-                 [reagent "0.9.1"]
-                 [re-frame "0.11.0"]
+                 [thheller/shadow-cljs "2.8.97"]
+                 [reagent "0.10.0"]
+                 [re-frame "0.12.0"]
                  [day8.re-frame/http-fx "v0.2.0"]
                  [metosin/reitit-frontend "0.4.2"]]
 
@@ -37,9 +37,9 @@
                             ["run" "-m" "shadow.cljs.devtools.cli" "compile" "karma-test"]
                             ["shell" "./node_modules/karma/bin/karma" "start" "--single-run" "--reporters" "junit,dots"]]}
 
-  :profiles {:dev {:dependencies [[binaryage/devtools "0.9.11"]
+  :profiles {:dev {:dependencies [[binaryage/devtools "1.0.0"]
                                   [proto-repl "0.3.1"]
-                                  [org.clojure/data.json "0.2.7"]]}
+                                  [org.clojure/data.json "1.0.0"]]}
              :prod {}}
 
   :prep-tasks [])
