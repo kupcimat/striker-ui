@@ -1,0 +1,32 @@
+name: Striker CI
+on: pull_request
+jobs:
+  run-app-tests:
+    name: Run App Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+      - name: Install JavaScript Dependencies
+        run: yarn install
+      - name: Install Clojure Dependencies
+        run: lein deps
+      - name: Run Tests
+        run: lein karma
+  run-docker-tests:
+    name: Run Docker Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Build Image
+        run: docker build --tag striker-frontend:latest .
+      - name: Run Container Structure Tests
+        uses: brpaz/structure-tests-action@master
+        with:
+          image: striker-frontend:latest
+          configFile: structure-tests/striker-frontend.yaml
